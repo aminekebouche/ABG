@@ -1,4 +1,4 @@
-package io.github.oliviercailloux.abg;
+package io.github.oliviercailloux.abg.model.enums;
 
 public enum Piece {
     WHITE_PAWN,

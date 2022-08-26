@@ -1,5 +1,6 @@
-package io.github.oliviercailloux.abg;import static com.google.common.base.Preconditions.checkNotNull;
+package io.github.oliviercailloux.abg.model;import static com.google.common.base.Preconditions.checkNotNull;
 
+import io.github.oliviercailloux.abg.model.enums.Piece;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;

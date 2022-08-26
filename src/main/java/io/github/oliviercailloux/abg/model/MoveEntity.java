@@ -1,4 +1,4 @@
-package io.github.oliviercailloux.abg;
+package io.github.oliviercailloux.abg.model;
 
 import com.github.bhlangonijr.chesslib.Piece;
 import com.github.bhlangonijr.chesslib.Square;
@@ -40,7 +40,7 @@ public class MoveEntity {
   @ManyToOne
   GameEntity game;
 
-  MoveEntity() {
+  public MoveEntity() {
     from = Square.NONE;
     to = Square.NONE;
     promotion = Piece.NONE;

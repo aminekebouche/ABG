@@ -3,8 +3,8 @@ package io.github.oliviercailloux.abg.model.state;
 import static java.util.Objects.requireNonNull;
 
 import com.github.bhlangonijr.chesslib.Side;
-import io.github.oliviercailloux.abg.ChessBoard;
-import io.github.oliviercailloux.abg.MyBoard;
+import io.github.oliviercailloux.abg.model.ChessBoard;
+import io.github.oliviercailloux.abg.model.MyBoard;
 import java.util.EnumMap;
 
 /**

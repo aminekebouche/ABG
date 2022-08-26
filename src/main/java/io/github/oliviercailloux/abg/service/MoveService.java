@@ -1,5 +1,7 @@
-package io.github.oliviercailloux.abg;
+package io.github.oliviercailloux.abg.service;
 
+import io.github.oliviercailloux.abg.model.MoveEntity;
+import io.github.oliviercailloux.abg.utils.QueryHelper;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;

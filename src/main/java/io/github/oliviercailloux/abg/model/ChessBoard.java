@@ -1,4 +1,4 @@
-package io.github.oliviercailloux.abg;
+package io.github.oliviercailloux.abg.model;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 

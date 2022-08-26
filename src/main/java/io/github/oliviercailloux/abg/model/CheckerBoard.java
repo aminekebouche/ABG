@@ -1,4 +1,5 @@
-package io.github.oliviercailloux.abg;
+package io.github.oliviercailloux.abg.model;
+
 
 import com.github.bhlangonijr.chesslib.Side;
 import com.github.bhlangonijr.chesslib.move.MoveException;
@@ -8,6 +9,7 @@ import javax.inject.Inject;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
+import io.github.oliviercailloux.abg.model.enums.Piece;
 
 @Entity
 public class CheckerBoard extends MyBoard {

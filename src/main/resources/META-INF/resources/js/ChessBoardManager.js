@@ -37,32 +37,42 @@ class ChessBoardManager {
             (this.game.turn() === 'w' && piece.search(/^b/) !== -1) ||
             (this.game.turn() === 'b' && piece.search(/^w/) !== -1) ||
             this.timeOut) {
+			console.log("onDragStart" + piece);
             return false;
         }
+		console.log("onDragStart1" + piece);
     };
 
     /**
      * Prevents the drop if the move is not valid or time is out, else saves the move in the database and updates the board
      * @param src - original position of the piece
      * @param dst - destination position of the piece
+	   @param piece
+
      */
-    onDrop(src, dst) {
+    onDrop(source, target, piece) {
         if (this.timeOut) {
             return;
         }
+
         let move = this.game.move({
-            from: src,
-            to: dst,
+            from: source,
+            to: target,
             promotion: 'q' //todo: get right promotion; auto promote to queen for now...
         });
 
+		let movee = {
+            from: source,
+            to: target,
+            promotion: piece
+		};
         // a move is valid iff it isn't returned as null
         if (move === null) {
             return 'snapback'; // snapback the piece to its previous location
         }
 
         // otherwise do play the move on the server
-        this.playMove(move);
+        this.playMove(movee);
         this.updateTurn();
     };
 
@@ -116,6 +126,7 @@ class ChessBoardManager {
      * @throws error when game id is not entered yet (cannot sent to database)
      */
     playMove(move) {
+	console.log(move);
         if (this.gameId < 0) {
             return console.error('Invalid game ID');
         }
@@ -124,13 +135,14 @@ class ChessBoardManager {
         const objSent = JSON.stringify({
             from: move.from.toUpperCase(),
             to: move.to.toUpperCase(),
-            promotion: move.promotion || "NONE", // just to avoid passing null
+            promotion: move.promotion.toUpperCase() || "NONE", // just to avoid passing null
         })
 
         let fen;
         database.post(url, objSent, 'json', (data) => {
             fen = data;
         })
+		console.log(fen);
         this.board.position(fen);
 
         this.updateTurn();

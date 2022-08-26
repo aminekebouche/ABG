@@ -26,8 +26,8 @@ class GameManager {
             onDragStart: function(src, piece, pos, o) {
                 CBM.onDragStart(src, piece, pos, o);
             },
-            onDrop: function(src, dst) {
-                CBM.onDrop(src, dst);
+            onDrop: function(source, target, piece) {
+                CBM.onDrop(source, target, piece);
             },
             onSnapEnd: function() {
                 CBM.onSnapEnd();
@@ -93,6 +93,8 @@ class GameManager {
         this.manageTimePlayer();
     }
 
+	
+
     /**
      * Get moves from the database and plays them on the board
      */
@@ -101,10 +103,10 @@ class GameManager {
         let moves;
         database.get(url, (data) => {
         	this.CBM.loadMoves(data);
+			console.log(data);
             return moves = data;
         });
-
-
+		return moves;
     }
 
     /**

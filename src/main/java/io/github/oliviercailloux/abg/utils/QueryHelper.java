@@ -1,4 +1,4 @@
-package io.github.oliviercailloux.abg;
+package io.github.oliviercailloux.abg.utils;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;

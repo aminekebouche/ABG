@@ -1,16 +1,20 @@
-package io.github.oliviercailloux.abg;
+package io.github.oliviercailloux.abg.resources;
 
 import com.github.bhlangonijr.chesslib.Side;
 import com.github.bhlangonijr.chesslib.game.Game;
 import com.github.bhlangonijr.chesslib.move.Move;
 import com.github.bhlangonijr.chesslib.move.MoveException;
 import com.github.bhlangonijr.chesslib.pgn.PgnHolder;
-import io.github.oliviercailloux.abg.ChessBoard;
-import io.github.oliviercailloux.abg.GameEntity;
-import io.github.oliviercailloux.abg.MoveEntity;
+import io.github.oliviercailloux.abg.model.CheckerBoard;
+import io.github.oliviercailloux.abg.model.ChessBoard;
+import io.github.oliviercailloux.abg.model.GameEntity;
+import io.github.oliviercailloux.abg.model.MoveDAO;
+import io.github.oliviercailloux.abg.model.MoveEntity;
+import io.github.oliviercailloux.abg.model.MoveLittlePiece;
+import io.github.oliviercailloux.abg.model.MyBoard;
 import io.github.oliviercailloux.abg.model.state.GameState;
 import io.github.oliviercailloux.abg.model.state.PlayerState;
-// import io.github.oliviercailloux.abg.ChessService;
+import io.github.oliviercailloux.abg.service.ChessService;
 import java.io.File;
 import java.io.FileWriter;
 import java.time.Duration;
@@ -93,9 +97,10 @@ public class GameResource {
   @POST
   @Path("{gameId}/move")
   @Consumes(MediaType.APPLICATION_JSON)
-  public void addMove(@PathParam("gameId") int gameId, MoveDAO move) {
+  public void addMove(@PathParam("gameId") int gameId, MoveLittlePiece movel) {
+    MoveDAO move = MoveDAO.createMoveDAO(movel.getFrom(),movel.getTo(),movel.getPiece());
     LOGGER.info("POST game/{}/move", gameId);
-    LOGGER.info("POST game/{}/move", move);
+    LOGGER.info("Coucou{}", move.getPromotion());
     final GameEntity game = chessService.getGame(gameId);
     final Duration duration = game.getCurrentMoveDuration();
     final MoveEntity moveEntity = MoveEntity.createMoveEntity(game, move, duration);

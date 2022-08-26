@@ -1,4 +1,4 @@
-package io.github.oliviercailloux.abg;
+package io.github.oliviercailloux.abg.model;
 
 import com.github.bhlangonijr.chesslib.Side;
 import com.github.bhlangonijr.chesslib.move.MoveException;
